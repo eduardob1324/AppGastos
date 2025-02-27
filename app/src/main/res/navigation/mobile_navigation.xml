@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_gastos">
+
+    <fragment
+        android:id="@+id/navigation_gastos"
+        android:name="com.ed.app_gastos.ui.gastos.GastosFragment"
+        android:label="@string/title_gastos"
+        tools:layout="@layout/fragment_gastos" />
+
+    <fragment
+        android:id="@+id/navigation_ahorros"
+        android:name="com.ed.app_gastos.ui.ahorros.AhorrosFragment"
+        android:label="@string/title_ahorros"
+        tools:layout="@layout/fragment_ahorros" />
+
+    <fragment
+        android:id="@+id/navigation_gastosFijos"
+        android:name="com.ed.app_gastos.ui.gastosFijos.GastosFijosFragment"
+        android:label="@string/title_gastosFijos"
+        tools:layout="@layout/fragment_gastos_fijos" />
+</navigation>
