@@ -7,19 +7,39 @@
 
     <fragment
         android:id="@+id/navigation_gastos"
-        android:name="com.ed.app_gastos.ui.gastos.GastosFragment"
+        android:name="com.eba.appgastos.ui.gastos.GastosFragment"
         android:label="@string/title_gastos"
         tools:layout="@layout/fragment_gastos" />
 
     <fragment
         android:id="@+id/navigation_ahorros"
-        android:name="com.ed.app_gastos.ui.ahorros.AhorrosFragment"
+        android:name="com.eba.appgastos.ui.ahorros.AhorrosFragment"
         android:label="@string/title_ahorros"
         tools:layout="@layout/fragment_ahorros" />
 
     <fragment
-        android:id="@+id/navigation_gastosFijos"
-        android:name="com.ed.app_gastos.ui.gastosFijos.GastosFijosFragment"
+        android:id="@+id/navigation_gastos_fijos"
+        android:name="com.eba.appgastos.ui.gastosFijos.GastosFijosFragment"
         android:label="@string/title_gastosFijos"
         tools:layout="@layout/fragment_gastos_fijos" />
+
+    <fragment
+        android:id="@+id/navigation_form_gastos"
+        android:name="com.eba.appgastos.ui.gastos.gastosForm.GastosFormFragment"
+        android:label="Gastos Form"
+        tools:layout="@layout/fragment_gastos_form"/>
+
+    <fragment
+        android:id="@+id/navigation_form_ahorros"
+        android:name="com.eba.appgastos.ui.ahorros.ahorrosForm.AhorrosFormFragment"
+        android:label="Ahorros Form"
+        tools:layout="@layout/fragment_ahorros_form"/>
+
+    <fragment
+        android:id="@+id/navigation_form_gastos_fijos_form"
+        android:name="com.eba.appgastos.ui.gastosFijos.gastoFijoForm.GastoFijoFormFragment"
+        android:label="Gastos Fijos Form"
+        tools:layout="@layout/fragment_gasto_fijo_form"/>
+
+
 </navigation>

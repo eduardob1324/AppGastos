@@ -1,6 +1,42 @@
 <resources>
-    <string name="app_name">app-gastos</string>
-    <string name="title_gastos">Gastos</string>
+    <string name="app_name">AppGastos</string>
     <string name="title_ahorros">Ahorros</string>
+    <string name="title_gastos">Gastos</string>
     <string name="title_gastosFijos">Gastos Fijos</string>
+    <string name="titleBtnMenuAdd">Agregar</string>
+    <string name="tvNombre">Nombre:</string>
+    <string name="tvMonto">Monto:</string>
+    <string name="tvMontoMeta">Monto meta:</string>
+    <string name="tvFecha">Fecha:</string>
+    <string name="tvFechaFin">Seleccione fecha:</string>
+
+    <string name="edtFormNombre">Ingresa el nombre:</string>
+    <string name="edtFormMonto">00.00:</string>
+    <string name="btnAdd">Guardar</string>
+    <string name="btnCancelar">Cancelar</string>
+
+    <string-array name="options_spiner_form_gastos_tipo">
+        <item>Seleccione tipo:</item>
+        <item>Ingreso</item>
+        <item>Gasto</item>
+        <item>Gasto Fijo</item>
+    </string-array>
+
+    <string-array name="options_spiner_form_gastos_tipo_pago">
+        <item>Seleccione tipo_pago:</item>
+        <item>Tarjeta</item>
+        <item>Efectivo</item>
+    </string-array>
+
+    <string-array name="options_spiner_form_gastos_esAhorro">
+        <item>Seleccione es ahorro:</item>
+        <item>Si</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="options_spiner_form_gastos_fijos_es_servicio">
+        <item>Seleccione es servicio:</item>
+        <item>Si</item>
+        <item>No</item>
+    </string-array>
 </resources>
