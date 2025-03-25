@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "gastosDB.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -40,7 +40,6 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_GASTO_FIJO = "CREATE TABLE ahorros ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + "nombre TEXT, "
-            + "fecha_inicio INTEGER, "
             + "monto_ahorrado TEXT, "
             + "monto_meta TEXT "
             + ");";

@@ -21,7 +21,6 @@ public class AhorroRepository {
 
         ContentValues values = new ContentValues();
         values.put("nombre", ahorroDto.getNombre());
-        values.put("fecha_inicio", ahorroDto.getFechaInicio());
         values.put("monto_ahorrado", ahorroDto.getMontoAhorrado().toString());
         values.put("monto_meta", ahorroDto.getMontoMeta().toString());
         long id = db.insert("ahorros", null, values);
@@ -41,9 +40,8 @@ public class AhorroRepository {
                 ahorro = new AhorroDto();
                 ahorro.setId(cursor.getLong(0));
                 ahorro.setNombre(cursor.getString(1));
-                ahorro.setFechaInicio(cursor.getLong(2));
-                ahorro.setMontoAhorrado(new BigDecimal(cursor.getString(3)));
-                ahorro.setMontoMeta(new BigDecimal(cursor.getString(4)));
+                ahorro.setMontoAhorrado(new BigDecimal(cursor.getString(2)));
+                ahorro.setMontoMeta(new BigDecimal(cursor.getString(3)));
                 ahorros.add(ahorro);
             } while (cursor.moveToNext());
         }
@@ -62,16 +60,15 @@ public class AhorroRepository {
             ahorro = new AhorroDto();
             ahorro.setId(cursor.getLong(0));
             ahorro.setNombre(cursor.getString(1));
-            ahorro.setFechaInicio(cursor.getLong(2));
-            ahorro.setMontoAhorrado(new BigDecimal(cursor.getString(3)));
-            ahorro.setMontoMeta(new BigDecimal(cursor.getString(4)));
+            ahorro.setMontoAhorrado(new BigDecimal(cursor.getString(2)));
+            ahorro.setMontoMeta(new BigDecimal(cursor.getString(3)));
         }
         cursor.close();
         db.close();
         return ahorro;
     }
 
-    public boolean actualizarAhorro(AhorroDto ahorro) {
+    public void actualizarAhorro(AhorroDto ahorro) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("monto_ahorrado", ahorro.getMontoAhorrado().doubleValue());
@@ -79,7 +76,6 @@ public class AhorroRepository {
         String[] whereArgs = {String.valueOf(ahorro.getId())};
         int rowsAffected = db.update("ahorros", values, whereClause, whereArgs);
         db.close();
-        return rowsAffected > 0;
     }
 
 

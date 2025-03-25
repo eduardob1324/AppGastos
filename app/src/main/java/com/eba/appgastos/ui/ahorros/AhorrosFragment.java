@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,12 +23,14 @@ import com.eba.appgastos.dtos.AhorroDto;
 import com.eba.appgastos.repositorios.AhorroRepository;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class AhorrosFragment extends Fragment {
 
     private FragmentAhorrosBinding binding;
     private AhorroAdapter adapter;
     private AhorroRepository ahorroRepository;
+    private TextView tvTotalAhorros;
     private RecyclerView listAhorros;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -37,9 +40,12 @@ public class AhorrosFragment extends Fragment {
         binding = FragmentAhorrosBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         initComponents(root);
+        List<AhorroDto> ahorros = ahorroRepository.obtenerTodosLosAhorros();
+        adapter = new AhorroAdapter(ahorros);
         listAhorros.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false));
         listAhorros.setAdapter(adapter);
         accionesItems(listAhorros);
+        tvTotalAhorros.setText("$".concat(String.valueOf(sumarTotalAhorros(ahorros))));
 
         return root;
     }
@@ -53,7 +59,8 @@ public class AhorrosFragment extends Fragment {
     private void initComponents(View root){
         ahorroRepository = new AhorroRepository(root.getContext());
         listAhorros = root.findViewById(R.id.rvAhorros);
-        adapter = new AhorroAdapter(ahorroRepository.obtenerTodosLosAhorros());
+        tvTotalAhorros = root.findViewById(R.id.tvTotalAhorros);
+
     }
 
     private void accionesItems(RecyclerView listAhorros){
@@ -130,5 +137,14 @@ public class AhorrosFragment extends Fragment {
         builder.setNegativeButton("Cancelar", null);
         adapter.notifyItemChanged(position);
         builder.show();
+    }
+
+    private BigDecimal sumarTotalAhorros(List<AhorroDto> ahorros){
+        BigDecimal result = new BigDecimal(0);
+        for (AhorroDto ahorro : ahorros){
+            result = result.add(ahorro.getMontoAhorrado());
+
+        }
+        return result;
     }
 }

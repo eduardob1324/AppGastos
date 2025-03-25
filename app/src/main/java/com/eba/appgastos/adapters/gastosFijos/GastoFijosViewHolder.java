@@ -10,8 +10,6 @@ import com.eba.appgastos.R;
 import com.eba.appgastos.dtos.GastoFijoDto;
 import com.eba.appgastos.utis.Constantes;
 
-import java.math.BigDecimal;
-
 public class GastoFijosViewHolder extends RecyclerView.ViewHolder{
     private final TextView tvCardNombre, tvCardMonto, tvCardFecha, tvcardMontoAhorrado;
     private final CardView cardGastosFijos;
@@ -30,9 +28,9 @@ public class GastoFijosViewHolder extends RecyclerView.ViewHolder{
     public void render(GastoFijoDto gastoFijoDto){
         tvCardNombre.setText(gastoFijoDto.getNombre());
         tvCardMonto.setText("$" + gastoFijoDto.getMontoAbonado().toString());
-        tvcardMontoAhorrado.setText("$-" + gastoFijoDto.getMonto().toString());
+        tvcardMontoAhorrado.setText("$" + gastoFijoDto.getMonto().toString());
         tvCardFecha.setText("Fecha limite pago: " + Constantes.obtenerFecha(gastoFijoDto.getFechaLimitePago()));
-        cardGastosFijos.setCardBackgroundColor( Color.parseColor("#E94158"));
+        cardGastosFijos.setCardBackgroundColor( Color.parseColor("#A50005"));
         if (gastoFijoDto.getPagado() =='S'){
             cardGastosFijos.setCardBackgroundColor(Color.parseColor("#006507"));
         }

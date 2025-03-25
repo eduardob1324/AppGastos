@@ -19,6 +19,23 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
+        android:id="@+id/tvTotalCredito"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginVertical="120dp"
+        android:textColor="@color/obesidad"
+        android:background="@color/background_component_selected"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvTotalIngresos"-->
+
+    </TextView>
+
+    <TextView
         android:id="@+id/tvTotalIngresos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,12 +43,10 @@
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/todo_other_category"
-        android:layout_marginStart="8dp"
-        android:layout_marginVertical="110dp"
         android:background="@color/background_component_selected"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvTotalGastos"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/tvTotalCredito">
     </TextView>
 
     <TextView
@@ -41,12 +56,12 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:layout_marginVertical="110dp"
+
         android:background="@color/background_component_selected"
         android:textColor="@color/obesidad"
         app:layout_constraintStart_toEndOf="@+id/tvTotalIngresos"
         app:layout_constraintEnd_toStartOf="@+id/tvTotalRestante"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/tvTotalCredito">
     </TextView>
 
     <TextView
@@ -58,10 +73,10 @@
         android:textAlignment="center"
         android:background="@color/background_component_selected"
         android:textColor="@color/peso_bajo"
-        android:layout_marginVertical="110dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintStart_toEndOf="@+id/tvTotalGastos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvTotalCredito">
     </TextView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

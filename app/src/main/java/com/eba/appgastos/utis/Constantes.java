@@ -10,25 +10,6 @@ import java.util.Locale;
 import java.util.Map;
 
 public  class  Constantes {
-
-    private static final Map <String, Character> datos;
-
-    static {
-        datos = new HashMap<>();
-        datos.put("Gasto",'G');
-        datos.put("Ingreso",'I');
-        datos.put("Tarjeta",'T');
-        datos.put("Efectivo",'E');
-        datos.put("Si",'S');
-        datos.put("No",'N');
-    }
-
-    public static char obtenerChar(String st){
-        char value = ' ';
-        if (datos.containsKey(st)) value = datos.get(st);
-       return value;
-    }
-
     @SuppressLint("SimpleDateFormat")
     public static String obtenerFechaHora(Long fechaMilis){
         Date fecha = new Date(fechaMilis);

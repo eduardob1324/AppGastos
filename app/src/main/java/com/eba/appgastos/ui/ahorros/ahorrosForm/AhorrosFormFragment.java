@@ -26,7 +26,7 @@ public class AhorrosFormFragment extends Fragment {
 
     private FragmentAhorrosFormBinding binding;
     private Button btnCancelar, btnGuardar;
-    private EditText edtNombre, edtMonto, edtMontoMeta, edtFecha;
+    private EditText edtNombre, edtMonto, edtMontoMeta;
 
     private AhorroDto ahorro;
     private AhorroRepository ahorroRepository;
@@ -40,7 +40,6 @@ public class AhorrosFormFragment extends Fragment {
         binding = FragmentAhorrosFormBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         initComponents();
-        selectFecha();
         btnAdd();
         btnCancelar();
 
@@ -52,37 +51,10 @@ public class AhorrosFormFragment extends Fragment {
         edtNombre = binding.edtFormAhorrosNombre;
         edtMonto = binding.edtFormAhorroMonto;
         edtMontoMeta = binding.edtFormAhorroMontoMeta;
-        edtFecha = binding.edtFormAhorrofechaFin;
         btnGuardar = binding.btnAddFormAhorros;
         btnCancelar = binding.btnCancelarformAhorros;
     }
 
-    private void selectFecha() {
-        edtFecha.setOnClickListener(v -> {
-            // Obtener la fecha actual
-            Calendar calendar = Calendar.getInstance();
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
-                    (view, yearSelected, monthSelected, dayOfMonth) -> {
-                        // Establecer la fecha seleccionada
-                        Calendar selectedCalendar = Calendar.getInstance();
-                        selectedCalendar.set(yearSelected,
-                                monthSelected,
-                                dayOfMonth,
-                                Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
-                                Calendar.getInstance().get(Calendar.MINUTE),
-                                0);
-                        selectedCalendar.set(Calendar.MILLISECOND, 0);
-                        fechaMilis = selectedCalendar.getTimeInMillis();
-                        String selectedDate = dayOfMonth + "/" + (monthSelected + 1) + "/" + yearSelected;
-                        edtFecha.setText(selectedDate);
-                    }, year, month, day);
-            datePickerDialog.show();
-        });
-    }
 
     private void btnCancelar() {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
@@ -98,14 +70,13 @@ public class AhorrosFormFragment extends Fragment {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validaCampoTexto(edtNombre) || validaCampoTexto(edtMonto) || validaCampoTexto(edtMontoMeta) || validaCampoTexto(edtFecha)) {
+                if (validaCampoTexto(edtNombre) || validaCampoTexto(edtMonto) || validaCampoTexto(edtMontoMeta)) {
                     Toast.makeText(getActivity(), "No puede haber campos vacios", Toast.LENGTH_SHORT).show();
                 } else {
                     ahorro = new AhorroDto();
                     ahorro.setNombre(edtNombre.getText().toString());
                     ahorro.setMontoAhorrado(new BigDecimal(edtMonto.getText().toString()));
                     ahorro.setMontoMeta(new BigDecimal(edtMontoMeta.getText().toString()));
-                    ahorro.setFechaInicio(fechaMilis);
                     ahorroRepository = new AhorroRepository(getContext());
                     long id = ahorroRepository.insertarAhorro(ahorro);
                     if (id != 0) {

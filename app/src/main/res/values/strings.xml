@@ -24,7 +24,8 @@
 
     <string-array name="options_spiner_form_gastos_tipo_pago">
         <item>Seleccione tipo_pago:</item>
-        <item>Tarjeta</item>
+        <item>Credito</item>
+        <item>Debito</item>
         <item>Efectivo</item>
     </string-array>
 

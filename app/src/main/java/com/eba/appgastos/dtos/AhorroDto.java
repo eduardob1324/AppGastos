@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 public class AhorroDto {
     private Long id;
     private String nombre;
-    private Long fechaInicio;
     private BigDecimal montoAhorrado;
     private BigDecimal montoMeta;
 
@@ -23,14 +22,6 @@ public class AhorroDto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Long getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(Long fechaInicio) {
-        this.fechaInicio = fechaInicio;
     }
 
     public BigDecimal getMontoMeta() {
@@ -54,7 +45,6 @@ public class AhorroDto {
         return "AhorroDto{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", fechaInicio=" + fechaInicio +
                 ", montoAhorrado=" + montoAhorrado +
                 ", montoMeta=" + montoMeta +
                 '}';

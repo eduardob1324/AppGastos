@@ -35,12 +35,12 @@ public class GastoViewHolder extends RecyclerView.ViewHolder{
         tvCardFecha.setText(Constantes.obtenerFechaHora(gastoDto.getFecha()));
         //cardGastos.setCardBackgroundColor( Color.parseColor("#E94158"));
         cardGastos.setCardBackgroundColor( Color.parseColor("#A50005"));
-        imgCard.setImageResource(R.drawable.pay_by_cash);
+        imgCard.setImageResource(R.drawable.pay_by_credit_card);
         if (gastoDto.getTipo() == 'I'){
             cardGastos.setCardBackgroundColor(Color.parseColor("#006507"));
         }
-        if(gastoDto.getTipoPago() == 'T' ){
-            imgCard.setImageResource(R.drawable.pay_by_credit_card);
+        if(gastoDto.getTipoPago() == 'E' ){
+            imgCard.setImageResource(R.drawable.pay_by_cash);
         }
     }
 }

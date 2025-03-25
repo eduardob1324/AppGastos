@@ -24,7 +24,8 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class GastosFijosFragment extends Fragment {
+public class
+GastosFijosFragment extends Fragment {
     private FragmentGastosFijosBinding binding;
     private TextView tvSerficios;
     private RecyclerView listaGastosFijos;

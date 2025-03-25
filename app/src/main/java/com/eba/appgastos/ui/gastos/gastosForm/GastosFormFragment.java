@@ -137,7 +137,7 @@ public class GastosFormFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(!parent.getItemAtPosition(position).toString().equalsIgnoreCase("Seleccione tipo:")){
-                    gasto.setTipo(Constantes.obtenerChar(parent.getItemAtPosition(position).toString()));
+                    gasto.setTipo(parent.getItemAtPosition(position).toString().charAt(0));
                     if(parent.getItemAtPosition(position).toString().equalsIgnoreCase("Gasto Fijo")){
                         spFormGastosEsAhorro.setVisibility(View.VISIBLE);
                         spValid++;
@@ -161,7 +161,7 @@ public class GastosFormFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(!parent.getItemAtPosition(position).toString().equalsIgnoreCase("Seleccione tipo_pago:")){
-                    gasto.setTipoPago(Constantes.obtenerChar(parent.getItemAtPosition(position).toString()));
+                    gasto.setTipoPago(parent.getItemAtPosition(position).toString().charAt(0));
                     spValid ++;
                 }
             }
@@ -178,7 +178,7 @@ public class GastosFormFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(!parent.getItemAtPosition(position).toString().equalsIgnoreCase("Seleccione es ahorro:")){
-                    gasto.setEsAhorro(Constantes.obtenerChar(parent.getItemAtPosition(position).toString()));
+                    gasto.setEsAhorro(parent.getItemAtPosition(position).toString().charAt(0));
                     spValid ++;
                     ocultarSp(parent.getItemAtPosition(position).toString());
                 }

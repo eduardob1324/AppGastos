@@ -30,7 +30,7 @@ import java.util.List;
 public class GastosFragment extends Fragment {
     private FragmentGastosBinding binding;
 
-    private TextView tvTotalGastos, tvTotalIngresos, tvTotalRestante;
+    private TextView tvTotalGastos, tvTotalIngresos, tvTotalRestante, tvTotalCredito;
     private GastosAdapter adapter;
     private GastoRepository gastoRepository;
     private AhorroRepository ahorroRepository;
@@ -66,6 +66,7 @@ public class GastosFragment extends Fragment {
         tvTotalGastos = root.findViewById(R.id.tvTotalGastos);
         tvTotalIngresos = root.findViewById(R.id.tvTotalIngresos);
         tvTotalRestante = root.findViewById(R.id.tvTotalRestante);
+        tvTotalCredito = root.findViewById(R.id.tvTotalCredito);
         listGastos = root.findViewById(R.id.rvGastos);
         listGastos.setLayoutManager(new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false));
     }
@@ -129,6 +130,8 @@ public class GastosFragment extends Fragment {
         tvTotalIngresos.setText("$".concat(String.valueOf(sumarIngresos(gastos))));
         tvTotalGastos.setText("$".concat(String.valueOf(sumarGastos(gastos))));
         tvTotalRestante.setText("$".concat(String.valueOf(sumarIngresos(gastos).subtract(sumarGastos(gastos)))));
+        tvTotalCredito.setText("Total deuda tarjeta: $".concat(String.valueOf(sumarGastosCredito(gastos))));
+
     }
 
     private BigDecimal sumarIngresos(List<GastoDto> gastos){
@@ -144,7 +147,17 @@ public class GastosFragment extends Fragment {
     private BigDecimal sumarGastos(List<GastoDto> gastos){
         BigDecimal result = new BigDecimal(0);
         for (GastoDto gasto : gastos){
-            if (gasto.getTipo() != 'I'){
+            if (gasto.getTipo() != 'I' && gasto.getTipoPago() != 'C'){
+                result = result.add(gasto.getMonto());
+            }
+        }
+        return result;
+    }
+
+    private BigDecimal sumarGastosCredito(List<GastoDto> gastos){
+        BigDecimal result = new BigDecimal(0);
+        for (GastoDto gasto : gastos){
+            if (gasto.getTipo() != 'I' && gasto.getTipoPago() == 'C'){
                 result = result.add(gasto.getMonto());
             }
         }
