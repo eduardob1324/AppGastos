@@ -26,7 +26,7 @@ public class AhorrosFormFragment extends Fragment {
 
     private FragmentAhorrosFormBinding binding;
     private Button btnCancelar, btnGuardar;
-    private EditText edtNombre, edtMonto, edtMontoMeta;
+    private EditText edtNombre, edtMontoInicial, edtMontoMeta;
 
     private AhorroDto ahorro;
     private AhorroRepository ahorroRepository;
@@ -49,8 +49,8 @@ public class AhorrosFormFragment extends Fragment {
 
     private void initComponents() {
         edtNombre = binding.edtFormAhorrosNombre;
-        edtMonto = binding.edtFormAhorroMonto;
         edtMontoMeta = binding.edtFormAhorroMontoMeta;
+        edtMontoInicial = binding.edtFormAhorroMontoInicial;
         btnGuardar = binding.btnAddFormAhorros;
         btnCancelar = binding.btnCancelarformAhorros;
     }
@@ -70,12 +70,15 @@ public class AhorrosFormFragment extends Fragment {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validaCampoTexto(edtNombre) || validaCampoTexto(edtMonto) || validaCampoTexto(edtMontoMeta)) {
+                if (validaCampoTexto(edtNombre)  || validaCampoTexto(edtMontoMeta)) {
                     Toast.makeText(getActivity(), "No puede haber campos vacios", Toast.LENGTH_SHORT).show();
                 } else {
                     ahorro = new AhorroDto();
                     ahorro.setNombre(edtNombre.getText().toString());
-                    ahorro.setMontoAhorrado(new BigDecimal(edtMonto.getText().toString()));
+                    ahorro.setMontoAhorrado(new BigDecimal(0));
+                    if (!edtMontoInicial.getText().toString().isBlank()){
+                        ahorro.setMontoAhorrado(new BigDecimal(edtMontoInicial.getText().toString()));
+                    }
                     ahorro.setMontoMeta(new BigDecimal(edtMontoMeta.getText().toString()));
                     ahorroRepository = new AhorroRepository(getContext());
                     long id = ahorroRepository.insertarAhorro(ahorro);

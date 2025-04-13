@@ -116,8 +116,7 @@ public class AhorrosFragment extends Fragment {
 
     private void showEdit( int position){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Ingrese algo");
-
+        builder.setTitle("Ingrese la cantidad a disminuir");
         final EditText input = new EditText(getContext());
         input.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
         builder.setView(input);

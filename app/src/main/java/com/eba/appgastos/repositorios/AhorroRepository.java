@@ -18,7 +18,6 @@ public class AhorroRepository {
 
     public long insertarAhorro(AhorroDto ahorroDto) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put("nombre", ahorroDto.getNombre());
         values.put("monto_ahorrado", ahorroDto.getMontoAhorrado().toString());

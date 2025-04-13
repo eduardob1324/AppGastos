@@ -11,7 +11,7 @@ import com.eba.appgastos.R;
 import com.eba.appgastos.dtos.AhorroDto;
 public class AhorroViewHolder extends RecyclerView.ViewHolder{
 
-    private final TextView tvCardNombreAhorro, tvCardMontoAhorro, tvCardMontoMetaAhorro, tvCardMontoFaltanteAhorro;
+    private final TextView tvCardNombreAhorro, tvCardMontoAhorro, tvCardMontoMetaAhorro;
     private final CardView cardAhorros;
 
     public AhorroViewHolder(@NonNull View view) {
@@ -20,7 +20,6 @@ public class AhorroViewHolder extends RecyclerView.ViewHolder{
         tvCardNombreAhorro = view.findViewById(R.id.tvCardNombreAhorro);
         tvCardMontoAhorro = view.findViewById(R.id.tvCardMontoAhorro);
         tvCardMontoMetaAhorro = view.findViewById(R.id.tvCardMontoMetaAhorro);
-        tvCardMontoFaltanteAhorro = view.findViewById(R.id.tvCardMontoFaltanteAhorro);
         cardAhorros = view.findViewById(R.id.cardAhorro);
     }
 
@@ -29,7 +28,6 @@ public class AhorroViewHolder extends RecyclerView.ViewHolder{
         tvCardNombreAhorro.setText(ahorroDto.getNombre());
         tvCardMontoAhorro.setText("$"+ ahorroDto.getMontoAhorrado().toString());
         tvCardMontoMetaAhorro.setText("$"+ ahorroDto.getMontoMeta().toString());
-        tvCardMontoFaltanteAhorro.setText("$"+ahorroDto.getMontoMeta().subtract(ahorroDto.getMontoAhorrado()).toString());
         cardAhorros.setCardBackgroundColor( Color.parseColor("#006507"));
     }
 }

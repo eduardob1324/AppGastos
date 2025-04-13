@@ -43,6 +43,8 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+//    implementation 'com.android.support:appcompat-v7:28.0.0'
+//    implementation 'androidx.appcompat:appcompat:1.7.0'
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
